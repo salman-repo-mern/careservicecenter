@@ -294,38 +294,64 @@
             >Schedule a Service</h2>
             <div class="grid md:grid-cols-2 gap-12">
                 <!-- Contact Form -->
-                <div class="bg-white p-8 rounded-xl shadow-md">
-                    <form id="serviceForm" class="space-y-4">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent " required placeholder="enter name ">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent" required placeholder="enter mobile number">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email (Optional)</label>
-                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="enter mail-id">
-                        </div>
-                        <div>
-                            <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service Needed</label>
-                            <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent">
-                                <option value="washing-machine">Washing Machine Repair</option>
-                                <option value="microwave">Microwave Repair</option>
-                                <option value="both">Both Services</option>
-                                <option value="other">Other Appliance</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Additional Details</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent resize-none overflow-auto " placeholder="Write a short description of the issue"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-purple-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-purple-700 transition duration-300">
-                            Request Service Call
-                        </button>
-                    </form>
-                </div>
+               <div class="bg-white p-8 rounded-xl shadow-md">
+    <form id="serviceForm" class="space-y-4">
+        <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent " required placeholder="enter name ">
+        </div>
+        <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent" required placeholder="enter mobile number">
+        </div>
+        <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email (Optional)</label>
+            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="enter mail-id">
+        </div>
+        <div>
+            <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service Needed</label>
+            <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                <option value="washing-machine">Washing Machine Repair</option>
+                <option value="microwave">Microwave Repair</option>
+                <option value="both">Both Services</option>
+                <option value="other">Other Appliance</option>
+            </select>
+        </div>
+        <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Additional Details</label>
+            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent resize-none overflow-auto " placeholder="Write a short description of the issue"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-purple-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-purple-700 transition duration-300">
+            Request Service Call
+        </button>
+    </form>
+</div>
+
+<script>
+document.getElementById("serviceForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+    const service = document.getElementById("service").value;
+    const message = document.getElementById("message").value;
+
+    // Replace with your WhatsApp business number (include country code, no +)
+    const whatsappNumber = "919916697580";  
+
+    const text = `Hello, I would like to request a service call:%0A
+    👤 *Name*: ${name}%0A
+    📞 *Phone*: ${phone}%0A
+    📧 *Email*: ${email || "N/A"}%0A
+    🔧 *Service Needed*: ${service}%0A
+    📝 *Additional Details*: ${message}`;
+
+    const url = `https://wa.me/${whatsappNumber}?text=${text}`;
+    window.open(url, "_blank");
+});
+</script>
+
 
                 <!-- Contact Info -->
                 <div class="space-y-6">
